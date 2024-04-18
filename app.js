@@ -11,11 +11,11 @@ app.use(express.static("public"));
 
 //Template Engine
 app.use(expressLayout);
-app.set('layout', './layouts/layout');
+app.set("layout", "./layouts/main");
 app.set("view engine", "ejs");
 
-
-app.get("/", require("./server/routes/main"));
+const mainRoutes = require("./server/routes/main");
+app.use("/", mainRoutes); // Mount main routes
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
